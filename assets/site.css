@@ -503,3 +503,7 @@ ul,ol{margin:0;padding:0;list-style:none}
   :root:not([data-theme="dark"]) .nav:not(.is-solid){
     background:linear-gradient(180deg,rgba(210,208,203,.94) 0%,rgba(210,208,203,.72) 62%,rgba(210,208,203,0) 100%)}
 }
+
+/* ---------- the logo is the way back to the racking hub ---------- */
+.nav__logo{display:inline-flex;align-items:center;flex:none;border-radius:4px;transition:opacity .2s}
+.nav__logo:hover{opacity:.72}
