@@ -32,6 +32,8 @@
   --gutter-r:max(16px,env(safe-area-inset-right,0px));
   --maxw:1240px;
   --nav-h:clamp(72px,8vh,96px);
+  --bg-grey:#2B3037;   /* continuous background ribbons */
+  --bg-blush:#30222A;
   --page-gap:clamp(96px,16vh,190px);
   --pagew:1280px;      /* catalogue pages sit narrower than the hero so they breathe */  /* space between "pages" instead of rules */
   color-scheme:dark;
@@ -411,11 +413,13 @@ ul,ol{margin:0;padding:0;list-style:none}
    ═══════════════════════════════════════════════════════════════ */
 :root[data-theme="light"]{
   --shark:#D2D0CB;--ink:#C7C5C0;--steel:#C7C5C0;--blush:#D2B8BA;
+  --bg-grey:#C7C5C0;--bg-blush:#D2B8BA;
   --line:rgba(26,28,31,.20);--fg:#1A1C1F;--muted:#1A1C1F;color-scheme:light;
 }
 @media (prefers-color-scheme:light){
   :root:not([data-theme="dark"]){
   --shark:#D2D0CB;--ink:#C7C5C0;--steel:#C7C5C0;--blush:#D2B8BA;
+  --bg-grey:#C7C5C0;--bg-blush:#D2B8BA;
   --line:rgba(26,28,31,.20);--fg:#1A1C1F;--muted:#1A1C1F;color-scheme:light;
   }
 }
@@ -507,3 +511,23 @@ ul,ol{margin:0;padding:0;list-style:none}
 /* ---------- the logo is the way back to the racking hub ---------- */
 .nav__logo{display:inline-flex;align-items:center;flex:none;border-radius:4px;transition:opacity .2s}
 .nav__logo:hover{opacity:.72}
+
+
+/* ───────────────────────────────────────────────────────────────
+   CONTINUOUS BACKGROUND
+   Ribbons painted on body's own background-image, so they span the
+   whole document and run unbroken from the cover to the contact
+   page — above the base colour, below every bit of content.
+   Proportions follow the V2 catalogue: ~67% paper, ~18% grey, ~13% blush.
+   ─────────────────────────────────────────────────────────────── */
+body{
+  background-color:var(--shark);
+  background-image:
+    repeating-linear-gradient(104deg,transparent 0 770px,var(--bg-blush) 770px 860px,transparent 860px 865px),
+    repeating-linear-gradient(104deg,transparent 0 770px,var(--bg-grey) 770px 905px,transparent 905px 910px);
+}
+@media (max-width:760px){
+  body{background-image:
+    repeating-linear-gradient(104deg,transparent 0 330px,var(--bg-blush) 330px 386px,transparent 386px 390px),
+    repeating-linear-gradient(104deg,transparent 0 330px,var(--bg-grey) 330px 412px,transparent 412px 416px)}
+}
